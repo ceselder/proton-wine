@@ -1898,6 +1898,7 @@ static NTSTATUS heap_release_bin_group( struct heap *heap, ULONG flags, struct b
     /* try re-using the block group instead of releasing it */
     if (RtlQueryDepthSList( &bin->groups ) <= ARRAY_SIZE(affinity_mapping))
     {
+        
         RtlInterlockedPushEntrySList( &bin->groups, &group->entry );
         return STATUS_SUCCESS;
     }
@@ -2049,6 +2050,7 @@ void heap_thread_detach(void)
  */
 void *WINAPI DECLSPEC_HOTPATCH RtlAllocateHeap( HANDLE handle, ULONG flags, SIZE_T size )
 {
+    WARN("[LOL_DEBUG] FUNCTION RtlAllocateHeap");
     struct heap *heap;
     SIZE_T block_size;
     void *ptr = NULL;

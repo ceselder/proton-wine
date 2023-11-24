@@ -269,6 +269,7 @@ ULONG WINAPI RtlRemoveVectoredExceptionHandler( PVOID handler )
  */
 void WINAPI RtlSetUnhandledExceptionFilter( PRTL_EXCEPTION_FILTER filter )
 {
+    WARN("[LOL_DEBUG] FUNCTION RtlSetUnhandledExceptionFilter");
     unhandled_exception_filter = filter;
 }
 
@@ -606,6 +607,7 @@ RUNTIME_FUNCTION *lookup_function_info( ULONG_PTR pc, ULONG_PTR *base, LDR_DATA_
 PRUNTIME_FUNCTION WINAPI RtlLookupFunctionEntry( ULONG_PTR pc, ULONG_PTR *base,
                                                  UNWIND_HISTORY_TABLE *table )
 {
+    WARN("[LOL_DEBUG] FUNCTION RtlLookupFunctionEntry");
     LDR_DATA_TABLE_ENTRY *module;
     RUNTIME_FUNCTION *func;
 
