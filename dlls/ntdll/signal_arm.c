@@ -1036,6 +1036,7 @@ PVOID WINAPI RtlVirtualUnwind( ULONG type, ULONG_PTR base, ULONG_PTR pc,
                                PVOID *handler_data, ULONG_PTR *frame_ret,
                                KNONVOLATILE_CONTEXT_POINTERS *ctx_ptr )
 {
+    printf("[LOL_DEBUG] FUNCTION RtlVirtualUnwind");
     void *handler;
 
     TRACE( "type %x pc %lx sp %x func %lx\n", type, pc, context->Sp, base + func->BeginAddress );
@@ -1158,6 +1159,7 @@ void CDECL RtlRestoreContext( CONTEXT *context, EXCEPTION_RECORD *rec )
 void WINAPI RtlUnwindEx( PVOID end_frame, PVOID target_ip, EXCEPTION_RECORD *rec,
                          PVOID retval, CONTEXT *context, UNWIND_HISTORY_TABLE *table )
 {
+    printf("[LOL_DEBUG] FUNCTION RtlAcquireSRWLockShared");
     EXCEPTION_REGISTRATION_RECORD *teb_frame = NtCurrentTeb()->Tib.ExceptionList;
     EXCEPTION_RECORD record;
     DISPATCHER_CONTEXT dispatch;

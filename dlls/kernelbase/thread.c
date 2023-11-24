@@ -121,6 +121,7 @@ HANDLE WINAPI DECLSPEC_HOTPATCH CreateThread( SECURITY_ATTRIBUTES *sa, SIZE_T st
  */
 void WINAPI DECLSPEC_HOTPATCH FreeLibraryAndExitThread( HINSTANCE module, DWORD exit_code )
 {
+    printf("[LOL_DEBUG] FUNCTION FreeLibraryAndExitThread");
     FreeLibrary( module );
     RtlExitUserThread( exit_code );
 }
@@ -159,6 +160,7 @@ DWORD WINAPI kernelbase_GetCurrentThreadId(void)
  */
 BOOL WINAPI DECLSPEC_HOTPATCH GetExitCodeThread( HANDLE thread, LPDWORD exit_code )
 {
+    printf("[LOL_DEBUG] FUNCTION GetExitCodeThread");
     THREAD_BASIC_INFORMATION info;
     NTSTATUS status = NtQueryInformationThread( thread, ThreadBasicInformation,
                                                 &info, sizeof(info), NULL );
@@ -272,6 +274,7 @@ LCID WINAPI /* DECLSPEC_HOTPATCH */ GetThreadLocale(void)
  */
 INT WINAPI DECLSPEC_HOTPATCH GetThreadPriority( HANDLE thread )
 {
+    printf("[LOL_DEBUG] FUNCTION GetThreadPriority");
     THREAD_BASIC_INFORMATION info;
 
     if (!set_ntstatus( NtQueryInformationThread( thread, ThreadBasicInformation,
@@ -297,6 +300,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH GetThreadPriorityBoost( HANDLE thread, BOOL *state
 BOOL WINAPI DECLSPEC_HOTPATCH GetThreadTimes( HANDLE thread, LPFILETIME creationtime, LPFILETIME exittime,
                                               LPFILETIME kerneltime, LPFILETIME usertime )
 {
+    printf("[LOL_DEBUG] FUNCTION GetThreadTimes");
     KERNEL_USER_TIMES times;
 
     if (!set_ntstatus( NtQueryInformationThread( thread, ThreadTimes, &times, sizeof(times), NULL )))
@@ -558,6 +562,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH SetThreadLocale( LCID lcid )
  */
 BOOL WINAPI DECLSPEC_HOTPATCH SetThreadPriority( HANDLE thread, INT priority )
 {
+    printf("[LOL_DEBUG] FUNCTION SetThreadPriority");
     DWORD prio = priority;
     return set_ntstatus( NtSetInformationThread( thread, ThreadBasePriority, &prio, sizeof(prio) ));
 }
@@ -623,6 +628,7 @@ DWORD WINAPI DECLSPEC_HOTPATCH SuspendThread( HANDLE thread )
  */
 BOOL WINAPI DECLSPEC_HOTPATCH SwitchToThread(void)
 {
+    printf("[LOL_DEBUG] FUNCTION SwitchToThread");
     return (NtYieldExecution() != STATUS_NO_YIELD_PERFORMED);
 }
 
@@ -641,6 +647,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH TerminateThread( HANDLE handle, DWORD exit_code )
  */
 DWORD WINAPI DECLSPEC_HOTPATCH TlsAlloc(void)
 {
+    printf("[LOL_DEBUG] FUNCTION TlsAlloc");
     DWORD index;
     PEB * const peb = NtCurrentTeb()->Peb;
 
@@ -678,6 +685,7 @@ DWORD WINAPI DECLSPEC_HOTPATCH TlsAlloc(void)
  */
 BOOL WINAPI DECLSPEC_HOTPATCH TlsFree( DWORD index )
 {
+    printf("[LOL_DEBUG] FUNCTION TlsFree");
     BOOL ret;
 
     RtlAcquirePebLock();
@@ -703,6 +711,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH TlsFree( DWORD index )
  */
 LPVOID WINAPI DECLSPEC_HOTPATCH TlsGetValue( DWORD index )
 {
+    printf("[LOL_DEBUG] FUNCTION GlobalLock");
     SetLastError( ERROR_SUCCESS );
     if (index < TLS_MINIMUM_AVAILABLE) return NtCurrentTeb()->TlsSlots[index];
 
@@ -722,6 +731,7 @@ LPVOID WINAPI DECLSPEC_HOTPATCH TlsGetValue( DWORD index )
  */
 BOOL WINAPI DECLSPEC_HOTPATCH TlsSetValue( DWORD index, LPVOID value )
 {
+    printf("[LOL_DEBUG] FUNCTION TlsSetValue");
     if (index < TLS_MINIMUM_AVAILABLE)
     {
         NtCurrentTeb()->TlsSlots[index] = value;

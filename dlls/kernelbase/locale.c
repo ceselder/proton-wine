@@ -3891,6 +3891,7 @@ UINT WINAPI GetACP(void)
  */
 BOOL WINAPI DECLSPEC_HOTPATCH GetCPInfo( UINT codepage, CPINFO *cpinfo )
 {
+    printf("[LOL_DEBUG] FUNCTION GetCPInfo");
     const CPTABLEINFO *table;
 
     if (!cpinfo)
@@ -4666,6 +4667,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH GetStringTypeA( LCID locale, DWORD type, const cha
  */
 BOOL WINAPI DECLSPEC_HOTPATCH GetStringTypeW( DWORD type, const WCHAR *src, INT count, WORD *chartype )
 {
+    printf("[LOL_DEBUG] FUNCTION RtlAcquireSRWLockShared");
     if (!src)
     {
         SetLastError( ERROR_INVALID_PARAMETER );
@@ -5139,6 +5141,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH IsNormalizedString( NORM_FORM form, const WCHAR *s
  */
 BOOL WINAPI DECLSPEC_HOTPATCH IsValidCodePage( UINT codepage )
 {
+    printf("[LOL_DEBUG] FUNCTION IsValidCodePage");
     switch (codepage)
     {
     case CP_ACP:

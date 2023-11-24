@@ -405,6 +405,7 @@ static NTSTATUS create_cmd_process( HANDLE token, HANDLE debug, SECURITY_ATTRIBU
  */
 BOOL WINAPI DECLSPEC_HOTPATCH CloseHandle( HANDLE handle )
 {
+    printf("[LOL_DEBUG] FUNCTION CloseHandle");
     if (handle == (HANDLE)STD_INPUT_HANDLE)
         handle = InterlockedExchangePointer( &NtCurrentTeb()->Peb->ProcessParameters->hStdInput, 0 );
     else if (handle == (HANDLE)STD_OUTPUT_HANDLE)
@@ -950,6 +951,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH DuplicateHandle( HANDLE source_process, HANDLE sou
                                                HANDLE dest_process, HANDLE *dest,
                                                DWORD access, BOOL inherit, DWORD options )
 {
+    printf("[LOL_DEBUG] FUNCTION DuplicateHandle");
     return set_ntstatus( NtDuplicateObject( source_process, source, dest_process, dest,
                                             access, inherit ? OBJ_INHERIT : 0, options ));
 }
@@ -1228,6 +1230,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH IsProcessInJob( HANDLE process, HANDLE job, BOOL *
  */
 BOOL WINAPI DECLSPEC_HOTPATCH IsProcessorFeaturePresent ( DWORD feature )
 {
+    printf("[LOL_DEBUG] FUNCTION IsProcessorFeaturePresent");
     return RtlIsProcessorFeaturePresent( feature );
 }
 
@@ -1468,6 +1471,7 @@ BOOL WINAPI DECLSPEC_HOTPATCH SetProcessWorkingSetSizeEx( HANDLE process, SIZE_T
  */
 BOOL WINAPI DECLSPEC_HOTPATCH TerminateProcess( HANDLE handle, DWORD exit_code )
 {
+    printf("[LOL_DEBUG] FUNCTION TerminateProcess");
     if (!handle)
     {
         SetLastError( ERROR_INVALID_HANDLE );
@@ -1533,6 +1537,7 @@ BOOL WINAPI BaseFlushAppcompatCache(void)
  */
 LPSTR WINAPI GetCommandLineA(void)
 {
+    printf("[LOL_DEBUG] FUNCTION GetCommandLineA");
     return command_lineA;
 }
 
@@ -1542,6 +1547,7 @@ LPSTR WINAPI GetCommandLineA(void)
  */
 LPWSTR WINAPI GetCommandLineW(void)
 {
+    printf("[LOL_DEBUG] FUNCTION GetCommandLineW");
     return command_lineW;
 }
 
@@ -1551,6 +1557,7 @@ LPWSTR WINAPI GetCommandLineW(void)
  */
 void WINAPI DECLSPEC_HOTPATCH GetStartupInfoW( STARTUPINFOW *info )
 {
+    printf("[LOL_DEBUG] FUNCTION GetStartupInfoW");
     *info = startup_infoW;
 }
 
@@ -1576,6 +1583,7 @@ HANDLE WINAPI DECLSPEC_HOTPATCH GetStdHandle( DWORD std_handle )
  */
 BOOL WINAPI DECLSPEC_HOTPATCH SetStdHandle( DWORD std_handle, HANDLE handle )
 {
+    printf("[LOL_DEBUG] FUNCTION SetStdHandle");
     switch (std_handle)
     {
     case STD_INPUT_HANDLE:  NtCurrentTeb()->Peb->ProcessParameters->hStdInput = handle;  return TRUE;
@@ -1703,6 +1711,7 @@ LPSTR WINAPI DECLSPEC_HOTPATCH GetEnvironmentStringsA(void)
  */
 LPWSTR WINAPI DECLSPEC_HOTPATCH GetEnvironmentStringsW(void)
 {
+    printf("[LOL_DEBUG] FUNCTION GetEnvironmentStringsW");
     LPWSTR ret;
     SIZE_T len;
 
@@ -1850,6 +1859,7 @@ DWORD WINAPI DECLSPEC_HOTPATCH GetEnvironmentVariableW( LPCWSTR name, LPWSTR val
  */
 BOOL WINAPI DECLSPEC_HOTPATCH FreeEnvironmentStringsW( LPWSTR ptr )
 {
+    printf("[LOL_DEBUG] FUNCTION FreeEnvironmentStringsW");
     return HeapFree( GetProcessHeap(), 0, ptr );
 }
 
