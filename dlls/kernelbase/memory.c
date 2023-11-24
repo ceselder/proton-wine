@@ -34,6 +34,7 @@
 #include "winternl.h"
 #include "winerror.h"
 #include "ddk/wdm.h"
+#include <wine/debug.h>
 
 #include "kernelbase.h"
 #include "wine/exception.h"

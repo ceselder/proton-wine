@@ -22,6 +22,7 @@
 #ifdef __arm__
 
 #include <stdlib.h>
+#include <wine/debug.h>
 #include <stdarg.h>
 
 #define NONAMELESSUNION

@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <wine/debug.h>
 #include <string.h>
 
 #define RUNNING_ON_VALGRIND 0  /* FIXME */

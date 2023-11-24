@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <wine/debug.h>
 
 #include "ntstatus.h"
 #define WIN32_NO_STATUS

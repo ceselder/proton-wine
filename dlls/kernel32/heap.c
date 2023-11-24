@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
+#include <wine/debug.h>
 
 #include "windef.h"
 #include "winbase.h"

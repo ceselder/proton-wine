@@ -28,6 +28,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <wine/debug.h>
 
 #define NONAMELESSUNION
 #include "ntstatus.h"

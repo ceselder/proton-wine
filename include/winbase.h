@@ -40,7 +40,7 @@ extern "C" {
 #define WINADVAPI DECLSPEC_IMPORT
 #endif
 #endif
-
+#include <wine/debug.h>
 #include <libloaderapi.h>
 #include <processthreadsapi.h>
 #include <synchapi.h>

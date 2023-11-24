@@ -34,6 +34,7 @@
 #include "wine/list.h"
 #include "wine/asm.h"
 #include "wine/debug.h"
+#include <wine/debug.h>
 #include "wine/exception.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(module);

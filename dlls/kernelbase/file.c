@@ -39,6 +39,7 @@
 #include "ddk/ntddk.h"
 #include "ddk/ntddser.h"
 #include "ioringapi.h"
+#include <wine/debug.h>
 
 #include "kernelbase.h"
 #include "wine/exception.h"

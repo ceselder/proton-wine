@@ -31,6 +31,7 @@
 #include "winver.h"
 #include "wincontypes.h"
 #include "winternl.h"
+#include <wine/debug.h>
 
 #include "kernelbase.h"
 #include "wine/debug.h"

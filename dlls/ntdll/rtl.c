@@ -29,6 +29,7 @@
 #define NONAMELESSUNION
 #define NONAMELESSSTRUCT
 #define WIN32_NO_STATUS
+#include <wine/debug.h>
 #include "winsock2.h"
 #include "windef.h"
 #include "winternl.h"

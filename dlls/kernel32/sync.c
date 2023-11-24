@@ -22,6 +22,7 @@
 #include <errno.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <wine/debug.h>
 
 #include "ntstatus.h"
 #define WIN32_NO_STATUS

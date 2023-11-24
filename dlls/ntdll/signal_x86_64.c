@@ -22,7 +22,7 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
-
+#include <wine/debug.h>
 #define NONAMELESSUNION
 #define NONAMELESSSTRUCT
 #include "ntstatus.h"

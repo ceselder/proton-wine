@@ -23,6 +23,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <wine/debug.h>
 
 #define NONAMELESSUNION
 #define NONAMELESSSTRUCT

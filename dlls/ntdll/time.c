@@ -29,6 +29,7 @@
 #include <string.h>
 #include <limits.h>
 #include <time.h>
+#include <wine/debug.h>
 
 #include "ntstatus.h"
 #define WIN32_NO_STATUS
